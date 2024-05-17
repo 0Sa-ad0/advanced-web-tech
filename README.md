@@ -1,7 +1,7 @@
 # ADVANCED WEB TECHNOLOGIES 
 ## NestJS & NextJS
 
-### so, in this project i did it with NestJS & NextJS.
+### So, in this project I did it with NestJS & NextJS.
 
 #### For NestJS, i added these features...
 *15 APIs (Controller and Service), Pipes (Transformation and Validation), File upload, Relationships (One-to-One, One-to-Many), JWT Authentication, Bcrypt and Session, Exception Handling, Mailer (smtp)*
