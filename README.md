@@ -11,4 +11,4 @@ and test/run in [Postman API Platform](www.postman.com).
 *AXIOS HTTP Request (API calls from NestJS), React Core Concepts (Props, States, Hooks), NextJs Concepts (routes, rendering, Libraries), Vanilla JS Form Validation (No HTML Validation), Tailwind UI, Authentication*
 and test/run Browser.
 
-I used [PostgreSQL](https://www.postgresql.org/) for Database.
+I used [PostgreSQL](https://www.postgresql.org/) for Database. 
