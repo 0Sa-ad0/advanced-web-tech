@@ -25,7 +25,7 @@ import { OfficeService } from "src/office/office.services";
       secure: true,
       auth: {
         user: 'web.applications.site0@gmail.com',
-        pass: 'ugtgwlknycfnsicj',
+        pass: '',
       },
     },
   }), 

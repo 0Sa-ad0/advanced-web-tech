@@ -57,8 +57,8 @@ const Footer: React.FC = () => {
         </ul>
 
         <p className="text-base">&copy; {currentMonth} - {currentYear}
-          <a href='' target='_blank' className="hover:underline mx-2">SAAD</a>
-          {/* All Rights Reserved. */}
+          <a href='' target='_blank' className="hover:underline mx-2"></a>
+          All Rights Reserved.
         </p>
       </div>
     </footer>
