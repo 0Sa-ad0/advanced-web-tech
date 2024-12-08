@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Header_for_signup from "@/app/components/header-for-signup/page";
 import Footer from "@/app/components/footer/page";
 import Swal from "sweetalert2";
-
 
 const SignUpPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,8 +16,6 @@ const SignUpPage: React.FC = () => {
   });
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -41,7 +38,7 @@ const SignUpPage: React.FC = () => {
       Swal.fire({
         title: "Error",
         text: "Please fill all fields.",
-        icon: "error"
+        icon: "error",
       });
       return;
     }
@@ -52,13 +49,10 @@ const SignUpPage: React.FC = () => {
       Swal.fire({
         title: "Error",
         text: "Please enter a valid email address.",
-        icon: "error"
+        icon: "error",
       });
       return;
     }
-
-
-
 
     let incorrectInput = "";
     const badPasswordLength =
@@ -73,7 +67,7 @@ const SignUpPage: React.FC = () => {
       Swal.fire({
         title: "Error",
         text: incorrectInput,
-        icon: "error"
+        icon: "error",
       });
       return;
     }
@@ -81,7 +75,10 @@ const SignUpPage: React.FC = () => {
     console.log(formData);
 
     try {
-      const response = await axios.post("http://localhost:3000/admin/signup", formData);
+      const response = await axios.post(
+        "http://localhost:3000/admin/signup",
+        formData
+      );
       if (response.status === 201 || response.status === 200) {
         Swal.fire({
           title: "Success",
@@ -94,15 +91,20 @@ const SignUpPage: React.FC = () => {
           password: "",
           phone: "",
         });
-      } router.push("/pages/login");
+      }
+      router.push("/pages/login");
     } catch (error: any) {
       if (error.response) {
         console.log(
-          `Invalid email or password. Please try again. ${error.response?.data?.message || ""}`
+          `Invalid email or password. Please try again. ${
+            error.response?.data?.message || ""
+          }`
         );
         Swal.fire({
           title: "Error",
-          text: `Invalid email or password. Please try again. ${error.response?.data?.message || ""}`,
+          text: `Invalid email or password. Please try again. ${
+            error.response?.data?.message || ""
+          }`,
           icon: "error",
         });
       }
@@ -117,33 +119,46 @@ const SignUpPage: React.FC = () => {
             <span className="size-12 block bg-gray-200 rounded-full dark:bg-neutral-700"></span>
           </div>
           <div className="ms-4 mt-2 w-full">
-            <p className="h-4 bg-gray-200 rounded-full dark:bg-neutral-700" style={{ width: '40%' }}></p>
+            <p
+              className="h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+              style={{ width: "40%" }}
+            ></p>
             <ul className="mt-5 space-y-3">
               {[...Array(5)].map((_, index) => (
-                <li key={index} className="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"></li>
+                <li
+                  key={index}
+                  className="w-full h-4 bg-gray-200 rounded-full dark:bg-neutral-700"
+                ></li>
               ))}
             </ul>
           </div>
         </div>
       );
     }
-
   };
-
 
   return (
     <>
       <div>
         <Header_for_signup />
       </div>
-      <div className="flex items-center justify-center min-h-screen" style={{ backgroundImage: 'url("/img1.jpg")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div
+        className="flex items-center justify-center min-h-screen"
+        style={{
+          backgroundImage: 'url("/img1.jpg")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="max-w-md w-full space-y-8 bg-white bg-opacity-80 p-8 rounded-lg">
           <div className="text-center">
             <h2 className="text-center text-3xl leading-9 font-extrabold text-gray-900 mt-6">
               Sign up for an account
             </h2>
-            <form className="mt-8 border border-gray-300 p-6 rounded-md" onSubmit={handleSubmit}>
-
+            <form
+              className="mt-8 border border-gray-300 p-6 rounded-md"
+              onSubmit={handleSubmit}
+            >
               <div>
                 <label htmlFor="name" className="sr-only">
                   Name
@@ -152,11 +167,11 @@ const SignUpPage: React.FC = () => {
                   id="name"
                   name="name"
                   type="text"
-
                   onChange={handleChange}
                   value={formData.name}
                   placeholder="Name"
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" />
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                />
               </div>
 
               <div className="mt-4 max-w-sm space-y-3">
@@ -167,10 +182,12 @@ const SignUpPage: React.FC = () => {
                   <div className="relative">
                     <input
                       type="text"
-                      id="hs-leading-icon"
-                      name="hs-leading-icon"
-                      className="py-3 px-4 ps-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-white placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                      id="email"
+                      name="email"
+                      onChange={handleChange}
+                      value={formData.email}
                       placeholder="you@site.com"
+                      className="py-3 px-4 ps-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none bg-white placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     />
 
                     <div className="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
@@ -209,8 +226,6 @@ const SignUpPage: React.FC = () => {
                 />
               </div>
 
-
-
               <div className="mt-4">
                 <label htmlFor="phone" className="sr-only">
                   Phone
@@ -219,11 +234,11 @@ const SignUpPage: React.FC = () => {
                   id="phone"
                   name="phone"
                   type="text"
-
                   onChange={handleChange}
                   value={formData.phone}
                   placeholder="Phone"
-                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" />
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                />
               </div>
               <div className="mt-6">
                 <button
@@ -234,11 +249,13 @@ const SignUpPage: React.FC = () => {
                   {isLoading ? "Signing up..." : "Sign up"}
                 </button>
               </div>
-
             </form>
             <p className="mt-2 text-center text-sm text-gray-600">
               Registered?{" "}
-              <a href="/pages/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <a
+                href="/pages/login"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
+              >
                 Login now
               </a>
             </p>
@@ -250,5 +267,5 @@ const SignUpPage: React.FC = () => {
       </div>
     </>
   );
-}
+};
 export default SignUpPage;
